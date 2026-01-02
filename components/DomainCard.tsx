@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 interface Domain {
   id: number;
@@ -21,8 +21,43 @@ interface DomainCardProps {
 export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
   const [logoFailed, setLogoFailed] = useState(false);
   const [logoLoaded, setLogoLoaded] = useState(false);
+  const [shouldLoadLogo, setShouldLoadLogo] = useState(false);
   const tiltRef = useRef<HTMLButtonElement | null>(null);
   const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    setLogoFailed(false);
+    setLogoLoaded(false);
+    setShouldLoadLogo(false);
+
+    if (!domain.logo) return;
+
+    const w = window as unknown as {
+      requestIdleCallback?: (
+        cb: () => void,
+        opts?: { timeout?: number }
+      ) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    let timeoutId: number | null = null;
+    let idleId: number | null = null;
+
+    if (typeof w.requestIdleCallback === "function") {
+      idleId = w.requestIdleCallback(() => setShouldLoadLogo(true), {
+        timeout: 800,
+      });
+    } else {
+      timeoutId = window.setTimeout(() => setShouldLoadLogo(true), 50);
+    }
+
+    return () => {
+      if (idleId != null && typeof w.cancelIdleCallback === "function") {
+        w.cancelIdleCallback(idleId);
+      }
+      if (timeoutId != null) window.clearTimeout(timeoutId);
+    };
+  }, [domain.logo]);
 
   const initials = useMemo(() => {
     const base = domain.name.split(".")[0] ?? domain.name;
@@ -79,7 +114,7 @@ export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
         />
 
         <div className="tilt-inner relative flex h-36 items-center justify-center">
-          {!!domain.logo && !logoFailed ? (
+          {!!domain.logo && shouldLoadLogo && !logoFailed ? (
             <>
               <img
                 src={domain.logo}
@@ -88,41 +123,10 @@ export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
                   logoLoaded ? "opacity-100" : "opacity-0"
                 }`}
                 loading="lazy"
+                decoding="async"
                 onLoad={() => setLogoLoaded(true)}
                 onError={() => setLogoFailed(true)}
               />
-              {!logoLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex items-center gap-3 rounded-2xl bg-black/30 ring-1 ring-white/10 px-4 py-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
-                      <span className="text-sm font-semibold tracking-wide text-white/90">
-                        {initials}
-                      </span>
-                    </div>
-                    <svg
-                      className="h-5 w-5 animate-spin text-white/70"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden
-                    >
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="9"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        opacity="0.25"
-                      />
-                      <path
-                        d="M21 12a9 9 0 0 0-9-9"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              )}
               <div className="absolute inset-0 bg-black/35" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
             </>

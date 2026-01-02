@@ -226,37 +226,16 @@ export default function Home() {
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
-            {loading
-              ? Array.from({ length: 8 }).map((_, i) => (
-                  <article
-                    key={`skeleton-${i}`}
-                    className="card-surface rounded-3xl p-5 animate-pulse"
-                    aria-hidden
-                  >
-                    <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 h-36" />
-                    <div className="mt-4 space-y-3">
-                      <div className="h-5 w-3/4 rounded-xl bg-white/5" />
-                      <div className="h-4 w-1/2 rounded-xl bg-white/5" />
-                      <div className="border-t border-white/10 pt-3 flex items-center justify-between">
-                        <div className="space-y-2">
-                          <div className="h-3 w-16 rounded-lg bg-white/5" />
-                          <div className="h-6 w-24 rounded-xl bg-white/5" />
-                        </div>
-                        <div className="h-10 w-24 rounded-2xl bg-white/5 ring-1 ring-white/10" />
-                      </div>
-                    </div>
-                  </article>
-                ))
-              : displayDomains.map((domain) => (
-                  <DomainCard
-                    key={domain.id}
-                    domain={domain}
-                    onOpenDetails={(d) => {
-                      setSelected(d);
-                      setModalOpen(true);
-                    }}
-                  />
-                ))}
+            {displayDomains.map((domain) => (
+              <DomainCard
+                key={domain.id}
+                domain={domain}
+                onOpenDetails={(d) => {
+                  setSelected(d);
+                  setModalOpen(true);
+                }}
+              />
+            ))}
           </div>
 
           {filteredDomains.length === 0 && (

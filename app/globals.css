@@ -135,23 +135,24 @@ body {
 }
 
 .bg-stars {
-  opacity: 0.95;
+  opacity: 1;
   mix-blend-mode: screen;
   background-image: radial-gradient(
       circle,
-      rgba(255, 255, 255, 0.78) 1px,
+      rgba(255, 255, 255, 0.92) 1px,
       transparent 1px
     ),
-    radial-gradient(circle, rgba(255, 255, 255, 0.34) 1px, transparent 1px),
-    radial-gradient(circle, rgba(56, 189, 248, 0.26) 1px, transparent 1px),
-    radial-gradient(circle, rgba(217, 70, 239, 0.22) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1.6px, transparent 1.6px);
-  background-size: 90px 90px, 140px 140px, 220px 220px, 320px 320px, 520px 520px;
+    radial-gradient(circle, rgba(255, 255, 255, 0.48) 1px, transparent 1px),
+    radial-gradient(circle, rgba(56, 189, 248, 0.34) 1px, transparent 1px),
+    radial-gradient(circle, rgba(217, 70, 239, 0.3) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.72) 2px, transparent 2px);
+  background-size: 78px 78px, 120px 120px, 200px 200px, 300px 300px, 520px 520px;
   background-position: 0 0, 60px 80px, 120px 20px, 200px 260px;
   animation: stars-twinkle 3.6s ease-in-out infinite,
     stars-drift 28s ease-in-out infinite;
   transform: translate3d(calc(var(--px) * -10px), calc(var(--py) * -8px), 0);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.08));
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.14))
+    drop-shadow(0 0 24px rgba(56, 189, 248, 0.08));
 }
 
 @keyframes stars-drift {
