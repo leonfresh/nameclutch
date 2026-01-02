@@ -24,6 +24,7 @@ interface Domain {
 
 export default function Home() {
   const [domains, setDomains] = useState<Domain[]>([]);
+  const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState<Domain | null>(null);
@@ -32,10 +33,12 @@ export default function Home() {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    setLoading(true);
     fetch("/api/domains")
       .then((res) => res.json())
       .then((data) => setDomains(data.domains))
-      .catch((err) => console.error("Error loading domains:", err));
+      .catch((err) => console.error("Error loading domains:", err))
+      .finally(() => setLoading(false));
   }, []);
 
   const filteredDomains = domains.filter((domain) => {
@@ -193,17 +196,67 @@ export default function Home() {
 
         {/* Domain grid */}
         <div className="container mx-auto px-4 pb-20">
+          {loading && (
+            <div className="mb-6 flex items-center justify-center">
+              <div className="inline-flex items-center gap-3 rounded-2xl bg-white/5 ring-1 ring-white/10 px-4 py-3 text-white/75">
+                <svg
+                  className="h-5 w-5 animate-spin text-white/75"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    opacity="0.25"
+                  />
+                  <path
+                    d="M21 12a9 9 0 0 0-9-9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                Loading domains…
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
-            {displayDomains.map((domain) => (
-              <DomainCard
-                key={domain.id}
-                domain={domain}
-                onOpenDetails={(d) => {
-                  setSelected(d);
-                  setModalOpen(true);
-                }}
-              />
-            ))}
+            {loading
+              ? Array.from({ length: 8 }).map((_, i) => (
+                  <article
+                    key={`skeleton-${i}`}
+                    className="card-surface rounded-3xl p-5 animate-pulse"
+                    aria-hidden
+                  >
+                    <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 h-36" />
+                    <div className="mt-4 space-y-3">
+                      <div className="h-5 w-3/4 rounded-xl bg-white/5" />
+                      <div className="h-4 w-1/2 rounded-xl bg-white/5" />
+                      <div className="border-t border-white/10 pt-3 flex items-center justify-between">
+                        <div className="space-y-2">
+                          <div className="h-3 w-16 rounded-lg bg-white/5" />
+                          <div className="h-6 w-24 rounded-xl bg-white/5" />
+                        </div>
+                        <div className="h-10 w-24 rounded-2xl bg-white/5 ring-1 ring-white/10" />
+                      </div>
+                    </div>
+                  </article>
+                ))
+              : displayDomains.map((domain) => (
+                  <DomainCard
+                    key={domain.id}
+                    domain={domain}
+                    onOpenDetails={(d) => {
+                      setSelected(d);
+                      setModalOpen(true);
+                    }}
+                  />
+                ))}
           </div>
 
           {filteredDomains.length === 0 && (
