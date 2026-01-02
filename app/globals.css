@@ -527,6 +527,28 @@ body {
   transition: transform 140ms ease, box-shadow 160ms ease;
 }
 
+.tilt-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  background:
+    radial-gradient(
+      circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.12) 14%,
+      rgba(255, 255, 255, 0) 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0) 55%
+    );
+  mix-blend-mode: screen;
+}
+
 .tilt-card .tilt-inner {
   transform-style: preserve-3d;
 }
@@ -540,6 +562,10 @@ body {
     scale(1.02);
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+}
+
+.tilt-card:hover::after {
+  opacity: 0.85;
 }
 
 @media (prefers-reduced-motion: reduce) {
