@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+export const runtime = 'nodejs'
+
 const PROJECT_ROOT = process.cwd()
 const DEV_DATA_PATH = path.join(PROJECT_ROOT, 'data', 'domains.json')
 const PUBLIC_FALLBACK_PATH = path.join(PROJECT_ROOT, 'public', 'domains.json')
