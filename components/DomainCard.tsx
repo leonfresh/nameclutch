@@ -1,75 +1,100 @@
+"use client";
 
-'use client'
-
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useRef, useState } from "react";
 
 interface Domain {
-  id: number
-  name: string
-  price: string
-  tld: string
-  featured: boolean
-  category: string
-  gradient: string
-  logo?: string | null
+  id: number;
+  name: string;
+  price: string;
+  tld: string;
+  featured: boolean;
+  category: string;
+  gradient: string;
+  logo?: string | null;
 }
 
 interface DomainCardProps {
-  domain: Domain
-  onOpenDetails?: (domain: Domain) => void
+  domain: Domain;
+  onOpenDetails?: (domain: Domain) => void;
 }
 
 export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
-  const [logoFailed, setLogoFailed] = useState(false)
+  const [logoFailed, setLogoFailed] = useState(false);
+  const tiltRef = useRef<HTMLButtonElement | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   const initials = useMemo(() => {
-    const base = domain.name.split('.')[0] ?? domain.name
-    return base.slice(0, 2).toUpperCase()
-  }, [domain.name])
+    const base = domain.name.split(".")[0] ?? domain.name;
+    return base.slice(0, 2).toUpperCase();
+  }, [domain.name]);
 
-  const siteHref = useMemo(() => `https://${domain.name}`, [domain.name])
+  const siteHref = useMemo(() => `https://${domain.name}`, [domain.name]);
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    const el = tiltRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const px = x / rect.width;
+    const py = y / rect.height;
+
+    // Rotate around center: subtle, premium.
+    const rotateY = (px - 0.5) * 26;
+    const rotateX = (0.5 - py) * 20;
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      el.style.setProperty("--rx", `${rotateX}deg`);
+      el.style.setProperty("--ry", `${rotateY}deg`);
+      el.style.setProperty("--mx", `${Math.round(px * 100)}%`);
+      el.style.setProperty("--my", `${Math.round(py * 100)}%`);
+    });
+  };
+
+  const onPointerLeave = () => {
+    const el = tiltRef.current;
+    if (!el) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    el.style.setProperty("--rx", `0deg`);
+    el.style.setProperty("--ry", `0deg`);
+    el.style.setProperty("--mx", `50%`);
+    el.style.setProperty("--my", `50%`);
+  };
 
   return (
     <article className="card-surface group rounded-3xl p-5">
       <button
         type="button"
         onClick={() => onOpenDetails?.(domain)}
-        className="relative w-full overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 text-left"
+        ref={tiltRef}
+        onPointerMove={onPointerMove}
+        onPointerLeave={onPointerLeave}
+        className="tilt-card relative w-full overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 text-left"
         aria-label={`Open details for ${domain.name}`}
       >
-        <div className={`absolute inset-0 bg-gradient-to-br ${domain.gradient} opacity-25`} />
-        <div className="absolute inset-0 card-noise opacity-40" />
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${domain.gradient} opacity-20`}
+        />
 
-        <div className="relative flex h-32 items-center justify-center">
-          {domain.featured && (
-            <div className="absolute left-3 top-3">
-              <span className="featured-pill">
-                <span className="inline-flex items-center gap-2">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                    <path
-                      d="M12 2l1.6 5.1L19 9l-5.4 1.9L12 16l-1.6-5.1L5 9l5.4-1.9L12 2Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  Featured
-                </span>
-              </span>
-            </div>
-          )}
-
+        <div className="tilt-inner relative flex h-36 items-center justify-center">
           {!!domain.logo && !logoFailed ? (
-            <img
-              src={domain.logo}
-              alt={`${domain.name} logo`}
-              className="max-h-16 max-w-[75%] object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)]"
-              loading="lazy"
-              onError={() => setLogoFailed(true)}
-            />
+            <>
+              <img
+                src={domain.logo}
+                alt={`${domain.name} logo`}
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+                onError={() => setLogoFailed(true)}
+              />
+              <div className="absolute inset-0 bg-black/35" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
+            </>
           ) : (
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/15">
-              <span className="text-lg font-semibold tracking-wide text-white/90">{initials}</span>
+              <span className="text-lg font-semibold tracking-wide text-white/90">
+                {initials}
+              </span>
             </div>
           )}
         </div>
@@ -93,8 +118,12 @@ export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
 
         <div className="flex items-center justify-between border-t border-white/10 pt-3">
           <div className="space-y-0.5">
-            <div className="text-xs uppercase tracking-wider text-white/50">Asking</div>
-            <div className="text-xl font-semibold text-white">{domain.price}</div>
+            <div className="text-xs uppercase tracking-wider text-white/50">
+              Asking
+            </div>
+            <div className="text-xl font-semibold text-white">
+              {domain.price}
+            </div>
           </div>
 
           <a
@@ -106,7 +135,13 @@ export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
           >
             <span className="inline-flex items-center gap-2">
               Inquire
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+              >
                 <path
                   d="M14 3h7v7m0-7L10 14"
                   stroke="currentColor"
@@ -120,5 +155,5 @@ export default function DomainCard({ domain, onOpenDetails }: DomainCardProps) {
         </div>
       </div>
     </article>
-  )
+  );
 }

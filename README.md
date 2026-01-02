@@ -14,11 +14,13 @@ A modern, glassmorphism-styled Next.js website to showcase premium domain names 
 ## Getting Started
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Run the development server:
+
 ```bash
 npm run dev
 ```

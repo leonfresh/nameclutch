@@ -8,7 +8,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-blue-400 via-purple-500 to-pink-500",
-      "logo": "/logos/aineuralnetwork.png"
+      "logo": "/logos/aineuralnetwork.png",
+      "pitch": {
+        "headline": "AINeuralNetwork.com — the literal authority name",
+        "subhead": "A direct, technical .com that reads like an industry term. Ideal when you want instant clarity, not a cute brand word.",
+        "paragraph": "AINeuralNetwork.com is built for credibility-first projects: research labs, training platforms, MLOps tooling, model marketplaces, or education brands. It says exactly what you do in two seconds — and that’s a huge conversion advantage when pitching enterprise buyers, developers, or investors. The phrasing feels established (like a category title), which helps you rank and be remembered.",
+        "bullets": [
+          "Perfect for: AI training, neural net courses, model tooling, research hubs",
+          "Reads as a keyword phrase — strong for SEO + instant comprehension",
+          "The .com extension keeps it enterprise-safe and globally credible",
+          "Works great as a ‘flagship’ brand name or a product line umbrella"
+        ],
+        "taglines": [
+          "Neural networks, explained and deployed.",
+          "Train. Evaluate. Ship.",
+          "Serious AI, clearly named."
+        ]
+      }
     },
     {
       "id": 3,
@@ -18,7 +34,23 @@
       "featured": false,
       "category": "Brand",
       "gradient": "from-orange-400 via-yellow-500 to-red-500",
-      "logo": "/logos/felicia.png"
+      "logo": "/logos/felicia.png",
+      "pitch": {
+        "headline": "Felicia.com.au — premium personal-name brand",
+        "subhead": "Warm, human, and instantly memorable. A strong Australian domain for a founder-led brand or customer-facing business.",
+        "paragraph": "Felicia.com.au is the kind of domain that feels trustworthy because it’s a real name — approachable, premium, and easy to say. It’s ideal for boutiques, studios, beauty/wellness, consulting, or a public-facing brand where personality matters. The .com.au extension adds local legitimacy and makes the name feel ‘official’ for Australian customers.",
+        "bullets": [
+          "Perfect for: boutique brand, personal brand, salon/wellness, consultancy",
+          "Real-name domains build trust fast (especially for services)",
+          "Short, clean spelling — easy to type and share",
+          ".com.au signals AU presence and local credibility"
+        ],
+        "taglines": [
+          "Simply Felicia.",
+          "A name you remember.",
+          "Made in Australia."
+        ]
+      }
     },
     {
       "id": 4,
@@ -28,7 +60,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-indigo-500 via-purple-500 to-blue-600",
-      "logo": "/logos/ainetwork.png"
+      "logo": "/logos/ainetwork.png",
+      "pitch": {
+        "headline": "AiNet.work — the AI network for doers",
+        "subhead": "Short, modern, and community-ready. Built for an AI collective, talent network, studio, or tool hub.",
+        "paragraph": "AiNet.work feels like a destination: a network you join, a platform you build on, or a collective that ships. The ‘work’ extension is perfect for a builder ecosystem — freelancers, agencies, startups, or an internal tool suite. It’s punchy, readable, and the meaning is obvious: AI + network + getting things done.",
+        "bullets": [
+          "Perfect for: AI talent network, creator collective, studio, tooling directory",
+          "‘.work’ matches the promise: practical outcomes, not hype",
+          "Short enough to look strong on a landing page + social headers",
+          "Name implies community + connectivity (network effects)"
+        ],
+        "taglines": [
+          "Where AI work gets done.",
+          "Build together. Ship faster.",
+          "The network for AI builders."
+        ]
+      }
     },
     {
       "id": 5,
@@ -38,7 +86,23 @@
       "featured": false,
       "category": "Finance",
       "gradient": "from-pink-400 via-purple-400 to-indigo-500",
-      "logo": "/logos/creditess.png"
+      "logo": "/logos/creditess.png",
+      "pitch": {
+        "headline": "Creditess.com — credit, with a premium tone",
+        "subhead": "A fintech-ready .com that blends ‘credit’ with an elegant ending. Sounds established, not scrappy.",
+        "paragraph": "Creditess.com is a finance name that feels polished — ideal for a product where trust matters: credit-building apps, scoring, lending marketplaces, receivables, billing, or B2B finance tooling. The name keeps ‘credit’ up front (instant category clarity) while the ‘-ess’ ending adds a premium, brandable cadence that stands out from generic fintech naming.",
+        "bullets": [
+          "Perfect for: credit building, scoring, lending, billing, fintech SaaS",
+          "Category-clear without sounding like a bank template",
+          "Premium cadence makes it brandable for consumer or B2B",
+          "Strong for ads and app store discovery (credit keyword)"
+        ],
+        "taglines": [
+          "Credit — made clearer.",
+          "Build your score. Own your future.",
+          "Modern credit, modern trust."
+        ]
+      }
     },
     {
       "id": 6,
@@ -48,7 +112,23 @@
       "featured": false,
       "category": "Design",
       "gradient": "from-cyan-400 via-blue-500 to-purple-600",
-      "logo": "/logos/exclaim-design.png"
+      "logo": "/logos/exclaim-design.png",
+      "pitch": {
+        "headline": "ExclaimDesign.com — design with impact",
+        "subhead": "Bold, energetic, and studio-friendly. A name that feels like a creative statement.",
+        "paragraph": "ExclaimDesign.com reads like a brand that has a point of view — perfect for a design studio, UI/UX agency, or a productized service. ‘Exclaim’ implies confidence and personality (you’re not just making things pretty), while ‘Design’ keeps it straightforward for search and referrals. It’s the kind of name that looks great on a portfolio site and feels credible in proposals.",
+        "bullets": [
+          "Perfect for: UI/UX studio, branding agency, creative consultancy",
+          "Memorable verb + clear service word = strong referral recall",
+          "Great domain for lead-gen (clients instantly know what you do)",
+          "Plays well as a logo mark and social handle"
+        ],
+        "taglines": [
+          "Make it impossible to ignore.",
+          "Design that speaks up.",
+          "Turn brands into statements."
+        ]
+      }
     },
     {
       "id": 7,
@@ -58,7 +138,23 @@
       "featured": false,
       "category": "Premium",
       "gradient": "from-yellow-400 via-orange-400 to-red-500",
-      "logo": "/logos/royalopen.png"
+      "logo": "/logos/royalopen.png",
+      "pitch": {
+        "headline": "RoyalOpen.com — exclusive access, publicly visible",
+        "subhead": "Premium, confident, and versatile. Sounds like an invite-only product that’s ready for scale.",
+        "paragraph": "RoyalOpen.com is a name you can build a high-status brand around: a private membership, a luxury marketplace, a premium launch platform, or a ‘gated-but-growing’ community. ‘Royal’ signals elevated positioning; ‘Open’ keeps it modern and approachable. That contrast is powerful — it implies exclusivity without feeling closed-off.",
+        "bullets": [
+          "Perfect for: membership club, luxury marketplace, premium launch platform",
+          "‘Royal’ = status; ‘Open’ = accessibility (best of both)",
+          "Strong .com for global expansion and high-ticket trust",
+          "Name works equally well for B2C or B2B premium offerings"
+        ],
+        "taglines": [
+          "Exclusive — without the barriers.",
+          "Open the premium tier.",
+          "Access, elevated."
+        ]
+      }
     },
     {
       "id": 8,
@@ -68,7 +164,23 @@
       "featured": true,
       "category": "Brand",
       "gradient": "from-blue-600 via-indigo-600 to-purple-700",
-      "logo": "/logos/horus.png"
+      "logo": "/logos/horus.png",
+      "pitch": {
+        "headline": "Horus.com.au — vision, protection, clarity",
+        "subhead": "A mythic, high-end brand name with strong symbolism. Perfect for security, analytics, or premium tech.",
+        "paragraph": "Horus is instantly evocative: the eye, the watcher, the protector. Horus.com.au gives you a short, powerful AU domain that can carry a serious brand — cybersecurity, monitoring, compliance, data observability, even a premium product line. It’s short enough to feel ‘category leader’ and distinctive enough that people remember it after one meeting.",
+        "bullets": [
+          "Perfect for: security, monitoring, analytics, compliance, premium SaaS",
+          "Single-word mythic name = strong brand moat",
+          "Short, authoritative, easy to pronounce",
+          ".com.au keeps it locally credible for AU clients"
+        ],
+        "taglines": [
+          "See the signal.",
+          "Protect what matters.",
+          "Clarity in real time."
+        ]
+      }
     },
     {
       "id": 10,
@@ -78,7 +190,23 @@
       "featured": false,
       "category": "Tech",
       "gradient": "from-green-400 via-emerald-500 to-teal-600",
-      "logo": "/logos/dotdevice.png"
+      "logo": "/logos/dotdevice.png",
+      "pitch": {
+        "headline": "DotDevice.com — tiny name, hardware energy",
+        "subhead": "Sounds like a real product line: IoT, sensors, wearables, and smart device brands.",
+        "paragraph": "DotDevice.com feels engineered. ‘Dot’ suggests precision and modern UI (pixels, points, signals), while ‘Device’ locks it into the hardware/IoT world instantly. It’s perfect for a smart gadget brand, an embedded tooling company, or a product family where you’ll eventually have multiple models and SKUs.",
+        "bullets": [
+          "Perfect for: IoT devices, sensors, wearables, hardware startups",
+          "Name sounds like an actual product you can buy",
+          "Easy to expand into sub-brands (DotDevice Mini, DotDevice Pro)",
+          "Clean .com for global ecommerce"
+        ],
+        "taglines": [
+          "Smart hardware, simplified.",
+          "Small device. Big signal.",
+          "Build the next gadget."
+        ]
+      }
     },
     {
       "id": 11,
@@ -88,7 +216,23 @@
       "featured": false,
       "category": "Tech",
       "gradient": "from-teal-400 via-cyan-500 to-blue-600",
-      "logo": "/logos/expertoid.png"
+      "logo": "/logos/expertoid.png",
+      "pitch": {
+        "headline": "Expertoid.com — expert-level, with a modern twist",
+        "subhead": "A distinctive knowledge brand name for AI agents, consulting, learning, or expert marketplaces.",
+        "paragraph": "Expertoid.com takes ‘expert’ and gives it a fresh, techy edge — ideal for a product that delivers answers, analysis, or specialist help. It’s great for an AI assistant brand, a tutoring/learning platform, a B2B advisory tool, or a curated expert network. The name feels credible without being boring.",
+        "bullets": [
+          "Perfect for: AI expert assistant, learning platform, expert marketplace",
+          "Sounds smart and contemporary — not corporate-heavy",
+          "Memorable because it’s slightly unexpected (sticky brand)",
+          "Short enough to look clean in a logo and app icon"
+        ],
+        "taglines": [
+          "Get the expert take.",
+          "Answers with authority.",
+          "Expertise, on demand."
+        ]
+      }
     },
     {
       "id": 12,
@@ -98,7 +242,23 @@
       "featured": false,
       "category": "AI & Tech",
       "gradient": "from-blue-500 via-indigo-600 to-purple-700",
-      "logo": "/logos/aivanced.png"
+      "logo": "/logos/aivanced.png",
+      "pitch": {
+        "headline": "Aivanced.com — advanced AI, instantly implied",
+        "subhead": "A sleek, product-ready AI brand name that sounds premium and capable.",
+        "paragraph": "Aivanced.com reads like ‘advanced’ with an AI-forward hook — perfect for a serious AI product that needs to sound mature on day one. It works for automation platforms, agent tooling, analytics, enterprise AI services, or a flagship AI suite. The spelling is clean enough to brand, and the cadence makes it feel like a real company name.",
+        "bullets": [
+          "Perfect for: AI automation, agents, analytics, enterprise AI services",
+          "‘Advanced’ vibe without a long generic name",
+          "Brandable spelling and strong pronunciation",
+          "Looks premium on pricing pages and investor decks"
+        ],
+        "taglines": [
+          "Advance with AI.",
+          "Next-level automation.",
+          "Built beyond baseline."
+        ]
+      }
     },
     {
       "id": 13,
@@ -108,7 +268,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-purple-600 via-pink-500 to-red-500",
-      "logo": "/logos/aihance.png"
+      "logo": "/logos/aihance.png",
+      "pitch": {
+        "headline": "Aihance.com — AI that enhances everything",
+        "subhead": "Short, punchy, and benefit-driven. A great fit for productivity tools, creative AI, or upgrades to existing workflows.",
+        "paragraph": "Aihance.com is built around a promise: make the user better. That’s perfect for an AI layer that enhances writing, images, video, customer support, or internal ops. The name is easy to say, reads clearly, and feels like a real product you subscribe to — not a research project.",
+        "bullets": [
+          "Perfect for: AI copilot, creative enhancer, workflow automation, support tools",
+          "Benefit-first naming improves conversion (enhance = outcome)",
+          "Short .com with modern cadence",
+          "Expandable into features: Enhance Docs, Enhance Voice, Enhance Studio"
+        ],
+        "taglines": [
+          "Enhance your workflow.",
+          "Upgrade with AI.",
+          "Better output, faster."
+        ]
+      }
     },
     {
       "id": 14,
@@ -118,7 +294,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-fuchsia-500 via-purple-600 to-indigo-600",
-      "logo": "/logos/aificial.png"
+      "logo": "/logos/aificial.png",
+      "pitch": {
+        "headline": "Aificial.com — artificial, but brandable",
+        "subhead": "A clever AI-forward name that’s playful without being unserious. Great for consumer AI or creator tools.",
+        "paragraph": "Aificial.com gives you a fresh, memorable twist on ‘artificial’ — instantly signaling AI while keeping a unique spelling that can be trademarkable and ownable. It’s ideal for a consumer-facing AI brand (apps, assistants, generators) where you want a modern vibe and a name people can repeat after seeing it once.",
+        "bullets": [
+          "Perfect for: AI content tools, creative apps, consumer AI products",
+          "Distinct spelling creates brand ownership (less generic than ‘Artificial’)",
+          "AI signal is obvious, but the vibe stays fun",
+          "Short enough to look sharp in a neon/cyber aesthetic"
+        ],
+        "taglines": [
+          "Artificial — with personality.",
+          "Make it. Remix it.",
+          "Creative AI, made simple."
+        ]
+      }
     },
     {
       "id": 15,
@@ -128,7 +320,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-violet-500 via-purple-600 to-indigo-700",
-      "logo": "/logos/aitacular.png"
+      "logo": "/logos/aitacular.png",
+      "pitch": {
+        "headline": "Aitacular.com — spectacular AI branding",
+        "subhead": "High-energy, memorable, and made for launches. A strong name for AI products that want hype and style.",
+        "paragraph": "Aitacular.com is an attention name — the kind that’s perfect for a product that wants to be talked about. It’s ideal for creative AI, new app launches, AI marketplaces, or a newsletter/media brand. The ‘-tacular’ ending gives it built-in excitement, while the ‘AI’ lead keeps the category clear.",
+        "bullets": [
+          "Perfect for: creative AI apps, launch platforms, AI media/newsletter",
+          "Built-in hype makes marketing easier",
+          "Short enough for merch, headers, and social handles",
+          "Feels consumer-friendly and modern"
+        ],
+        "taglines": [
+          "Make AI spectacular.",
+          "Launch loud.",
+          "Big results. Bold name."
+        ]
+      }
     },
     {
       "id": 16,
@@ -138,7 +346,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-blue-500 via-indigo-500 to-purple-600",
-      "logo": "/logos/aiflect.png"
+      "logo": "/logos/aiflect.png",
+      "pitch": {
+        "headline": "Aiflect.com — AI that reflects and improves",
+        "subhead": "A premium, subtle AI name. Feels smart and introspective — great for analytics, coaching, or feedback-driven products.",
+        "paragraph": "Aiflect.com suggests reflection: insight, iteration, and getting better over time. That makes it a strong fit for AI analytics, performance tools, writing/communication coaching, product feedback systems, or personal improvement apps. It’s short, clean, and doesn’t scream ‘gimmick’ — it feels like a serious product.",
+        "bullets": [
+          "Perfect for: analytics AI, coaching, feedback tools, performance platforms",
+          "Premium tone — modern and trustworthy",
+          "Short .com with strong letter shape for logos",
+          "Name implies insight + improvement (sticky positioning)"
+        ],
+        "taglines": [
+          "Reflect. Refine. Repeat.",
+          "Turn signals into action.",
+          "Improve with intelligence."
+        ]
+      }
     },
     {
       "id": 17,
@@ -148,7 +372,23 @@
       "featured": true,
       "category": "AI & Tech",
       "gradient": "from-indigo-600 via-purple-600 to-pink-600",
-      "logo": "/logos/aiastic.png"
+      "logo": "/logos/aiastic.png",
+      "pitch": {
+        "headline": "Aiastic.com — enthusiastic AI energy",
+        "subhead": "A fun, brandable AI name that feels upbeat and community-ready. Great for consumer tools and creator products.",
+        "paragraph": "Aiastic.com is made for a friendly AI brand — something users want to recommend. It sounds energetic and positive, which fits AI assistants, content tools, prompt communities, or learning products. The name is short, memorable, and clearly AI-forward without feeling corporate.",
+        "bullets": [
+          "Perfect for: AI assistant, creator tools, prompt community, learning product",
+          "Upbeat brand vibe (great for consumer adoption)",
+          "Short, catchy, and easy to say",
+          "Works well for a mascot/character-led brand"
+        ],
+        "taglines": [
+          "Get excited about AI.",
+          "Make smarter, faster.",
+          "Friendly tools. Serious output."
+        ]
+      }
     }
   ]
 }

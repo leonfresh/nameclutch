@@ -1,52 +1,106 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import DomainCard from '@/components/DomainCard'
-import DomainModal from '@/components/DomainModal'
+import { useMemo, useRef, useState, useEffect } from "react";
+import DomainCard from "@/components/DomainCard";
+import DomainModal from "@/components/DomainModal";
 
 interface Domain {
-  id: number
-  name: string
-  price: string
-  tld: string
-  featured: boolean
-  category: string
-  gradient: string
-  logo?: string | null
+  id: number;
+  name: string;
+  price: string;
+  tld: string;
+  featured: boolean;
+  category: string;
+  gradient: string;
+  logo?: string | null;
+  pitch?: {
+    headline: string;
+    subhead: string;
+    paragraph: string;
+    bullets: string[];
+    taglines: string[];
+  } | null;
 }
 
 export default function Home() {
-  const [domains, setDomains] = useState<Domain[]>([])
-  const [filter, setFilter] = useState<string>('all')
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selected, setSelected] = useState<Domain | null>(null)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [domains, setDomains] = useState<Domain[]>([]);
+  const [filter, setFilter] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selected, setSelected] = useState<Domain | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const sceneRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    fetch('/api/domains')
-      .then(res => res.json())
-      .then(data => setDomains(data.domains))
-      .catch(err => console.error('Error loading domains:', err))
-  }, [])
+    fetch("/api/domains")
+      .then((res) => res.json())
+      .then((data) => setDomains(data.domains))
+      .catch((err) => console.error("Error loading domains:", err));
+  }, []);
 
-  const filteredDomains = domains.filter(domain => {
-    const matchesFilter = filter === 'all' || 
-      (filter === 'featured' && domain.featured) || 
-      domain.category === filter
-    const matchesSearch = domain.name.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesFilter && matchesSearch
-  })
+  const filteredDomains = domains.filter((domain) => {
+    const matchesFilter = filter === "all" || domain.category === filter;
+    const matchesSearch = domain.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
 
-  const categories = ['all', 'featured', ...Array.from(new Set(domains.map(d => d.category)))]
-  const featuredCount = domains.filter(d => d.featured).length
+  const displayDomains = useMemo(() => {
+    const parsePrice = (price: string) => {
+      const n = Number(String(price).replace(/[^0-9.]/g, ""));
+      return Number.isFinite(n) ? n : 0;
+    };
+
+    return [...filteredDomains].sort((a, b) => {
+      const pa = parsePrice(a.price);
+      const pb = parsePrice(b.price);
+      if (pb !== pa) return pb - pa;
+      return a.name.localeCompare(b.name);
+    });
+  }, [filteredDomains]);
+
+  const categories = [
+    "all",
+    ...Array.from(new Set(domains.map((d) => d.category))),
+  ];
+
+  useEffect(() => {
+    const el = sceneRef.current;
+    if (!el) return;
+
+    const onMove = (e: PointerEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const px = Math.max(0, Math.min(1, x));
+      const py = Math.max(0, Math.min(1, y));
+
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        el.style.setProperty("--px", `${(px - 0.5).toFixed(4)}`);
+        el.style.setProperty("--py", `${(py - 0.5).toFixed(4)}`);
+      });
+    };
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
     <main className="min-h-screen relative">
-      {/* Animated gradient background */}
-      <div className="gradient-bg"></div>
-      <div className="gradient-overlay"></div>
-      <div className="stars" aria-hidden />
-      <div className="pointer-events-none fixed inset-0 -z-10 opacity-30 card-noise" />
+      {/* Parallax neon background */}
+      <div ref={sceneRef} className="bg-scene" aria-hidden>
+        <div className="bg-aurora" />
+        <div className="bg-orbs" />
+        <div className="bg-stars" />
+        <div className="bg-grid" />
+        <div className="bg-dots" />
+        <div className="bg-vignette" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10">
@@ -54,8 +108,8 @@ export default function Home() {
           open={modalOpen}
           domain={selected}
           onClose={() => {
-            setModalOpen(false)
-            setSelected(null)
+            setModalOpen(false);
+            setSelected(null);
           }}
         />
 
@@ -64,7 +118,9 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10">
               <span className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-400 to-fuchsia-500" />
-              <span className="text-sm text-white/70">Premium domains • curated</span>
+              <span className="text-sm text-white/70">
+                Premium domains • curated
+              </span>
             </div>
 
             <h1 className="mt-6 text-4xl md:text-6xl font-semibold tracking-tight glow-text">
@@ -74,15 +130,16 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 text-base md:text-lg text-white/70">
-              A modern collection of brandable domains — clean, memorable, and ready for your next build.
+              A modern collection of brandable domains — clean, memorable, and
+              ready for your next build.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <div className="rounded-2xl bg-white/5 px-4 py-2 ring-1 ring-white/10 text-sm text-white/70">
-                <span className="text-white/90 font-semibold">{domains.length}</span> domains
-              </div>
-              <div className="rounded-2xl bg-white/5 px-4 py-2 ring-1 ring-white/10 text-sm text-white/70">
-                <span className="text-white/90 font-semibold">{featuredCount}</span> featured
+                <span className="text-white/90 font-semibold">
+                  {domains.length}
+                </span>{" "}
+                domains
               </div>
             </div>
           </div>
@@ -99,7 +156,12 @@ export default function Home() {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
               <input
                 type="text"
@@ -112,14 +174,14 @@ export default function Home() {
 
             {/* Category filters */}
             <div className="flex flex-wrap gap-2 justify-center">
-              {categories.map(category => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setFilter(category)}
                   className={`px-4 py-2 rounded-full font-semibold transition-all ${
                     filter === category
-                      ? 'bg-white/10 text-white ring-1 ring-white/20'
-                      : 'bg-white/5 text-white/70 hover:bg-white/10 ring-1 ring-white/10'
+                      ? "bg-white/10 text-white ring-1 ring-white/20"
+                      : "bg-white/5 text-white/70 hover:bg-white/10 ring-1 ring-white/10"
                   }`}
                 >
                   {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -132,13 +194,13 @@ export default function Home() {
         {/* Domain grid */}
         <div className="container mx-auto px-4 pb-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
-            {filteredDomains.map(domain => (
+            {displayDomains.map((domain) => (
               <DomainCard
                 key={domain.id}
                 domain={domain}
                 onOpenDetails={(d) => {
-                  setSelected(d)
-                  setModalOpen(true)
+                  setSelected(d);
+                  setModalOpen(true);
                 }}
               />
             ))}
@@ -146,7 +208,9 @@ export default function Home() {
 
           {filteredDomains.length === 0 && (
             <div className="glass rounded-3xl p-12 text-center">
-              <p className="text-xl text-white/60">No domains found matching your criteria</p>
+              <p className="text-xl text-white/60">
+                No domains found matching your criteria
+              </p>
             </div>
           )}
         </div>
@@ -164,5 +228,5 @@ export default function Home() {
         </footer>
       </div>
     </main>
-  )
+  );
 }
