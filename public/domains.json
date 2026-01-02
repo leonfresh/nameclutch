@@ -1,0 +1,154 @@
+{
+  "domains": [
+    {
+      "id": 1,
+      "name": "AINeuralNetwork.com",
+      "price": "$1,450",
+      "tld": ".com",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-blue-400 via-purple-500 to-pink-500",
+      "logo": "/logos/aineuralnetwork.png"
+    },
+    {
+      "id": 3,
+      "name": "Felicia.com.au",
+      "price": "$1,222",
+      "tld": ".com.au",
+      "featured": false,
+      "category": "Brand",
+      "gradient": "from-orange-400 via-yellow-500 to-red-500",
+      "logo": "/logos/felicia.png"
+    },
+    {
+      "id": 4,
+      "name": "AiNet.work",
+      "price": "$1,995",
+      "tld": ".work",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-indigo-500 via-purple-500 to-blue-600",
+      "logo": "/logos/ainetwork.png"
+    },
+    {
+      "id": 5,
+      "name": "Creditess.com",
+      "price": "$2,080",
+      "tld": ".com",
+      "featured": false,
+      "category": "Finance",
+      "gradient": "from-pink-400 via-purple-400 to-indigo-500",
+      "logo": "/logos/creditess.png"
+    },
+    {
+      "id": 6,
+      "name": "ExclaimDesign.com",
+      "price": "$2,315",
+      "tld": ".com",
+      "featured": false,
+      "category": "Design",
+      "gradient": "from-cyan-400 via-blue-500 to-purple-600",
+      "logo": "/logos/exclaim-design.png"
+    },
+    {
+      "id": 7,
+      "name": "RoyalOpen.com",
+      "price": "$2,315",
+      "tld": ".com",
+      "featured": false,
+      "category": "Premium",
+      "gradient": "from-yellow-400 via-orange-400 to-red-500",
+      "logo": "/logos/royalopen.png"
+    },
+    {
+      "id": 8,
+      "name": "Horus.com.au",
+      "price": "$1,999",
+      "tld": ".com.au",
+      "featured": true,
+      "category": "Brand",
+      "gradient": "from-blue-600 via-indigo-600 to-purple-700",
+      "logo": "/logos/horus.png"
+    },
+    {
+      "id": 10,
+      "name": "DotDevice.com",
+      "price": "$1,400",
+      "tld": ".com",
+      "featured": false,
+      "category": "Tech",
+      "gradient": "from-green-400 via-emerald-500 to-teal-600",
+      "logo": "/logos/dotdevice.png"
+    },
+    {
+      "id": 11,
+      "name": "Expertoid.com",
+      "price": "$1,120",
+      "tld": ".com",
+      "featured": false,
+      "category": "Tech",
+      "gradient": "from-teal-400 via-cyan-500 to-blue-600",
+      "logo": "/logos/expertoid.png"
+    },
+    {
+      "id": 12,
+      "name": "Aivanced.com",
+      "price": "$1,500",
+      "tld": ".com",
+      "featured": false,
+      "category": "AI & Tech",
+      "gradient": "from-blue-500 via-indigo-600 to-purple-700",
+      "logo": "/logos/aivanced.png"
+    },
+    {
+      "id": 13,
+      "name": "Aihance.com",
+      "price": "$1,450",
+      "tld": ".com",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-purple-600 via-pink-500 to-red-500",
+      "logo": "/logos/aihance.png"
+    },
+    {
+      "id": 14,
+      "name": "Aificial.com",
+      "price": "$1,500",
+      "tld": ".com",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-fuchsia-500 via-purple-600 to-indigo-600",
+      "logo": "/logos/aificial.png"
+    },
+    {
+      "id": 15,
+      "name": "Aitacular.com",
+      "price": "$1,450",
+      "tld": ".com",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-violet-500 via-purple-600 to-indigo-700",
+      "logo": "/logos/aitacular.png"
+    },
+    {
+      "id": 16,
+      "name": "Aiflect.com",
+      "price": "$1,650",
+      "tld": ".com",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-blue-500 via-indigo-500 to-purple-600",
+      "logo": "/logos/aiflect.png"
+    },
+    {
+      "id": 17,
+      "name": "Aiastic.com",
+      "price": "$1,995",
+      "tld": ".com",
+      "featured": true,
+      "category": "AI & Tech",
+      "gradient": "from-indigo-600 via-purple-600 to-pink-600",
+      "logo": "/logos/aiastic.png"
+    }
+  ]
+}
