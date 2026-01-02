@@ -146,9 +146,22 @@ body {
     radial-gradient(circle, rgba(217, 70, 239, 0.18) 1px, transparent 1px);
   background-size: 140px 140px, 220px 220px, 320px 320px, 520px 520px;
   background-position: 0 0, 60px 80px, 120px 20px, 200px 260px;
-  animation: stars-twinkle 3.6s ease-in-out infinite;
+  animation: stars-twinkle 3.6s ease-in-out infinite,
+    stars-drift 28s ease-in-out infinite;
   transform: translate3d(calc(var(--px) * -10px), calc(var(--py) * -8px), 0);
   filter: blur(0.15px);
+}
+
+@keyframes stars-drift {
+  0% {
+    background-position: 0 0, 60px 80px, 120px 20px, 200px 260px;
+  }
+  50% {
+    background-position: 18px -26px, 48px 104px, 146px 6px, 176px 296px;
+  }
+  100% {
+    background-position: 0 0, 60px 80px, 120px 20px, 200px 260px;
+  }
 }
 
 .bg-grid {
@@ -536,6 +549,12 @@ body {
   }
   .tilt-card::after {
     display: none;
+  }
+
+  .bg-aurora,
+  .bg-stars,
+  .bg-orbs {
+    animation: none;
   }
 }
 
